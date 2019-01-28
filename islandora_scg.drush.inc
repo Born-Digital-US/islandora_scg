@@ -188,7 +188,7 @@ function drush_islandora_scg_dump() {
   }
 
   module_load_include('inc', 'islandora_scg', 'includes/utilities');
-  $query = 'mods_recordInfo_recordOrigin_t:%22Islandora%20Sample%20Content%20Generator%22';
+  $query = 'mods_recordInfo_recordOrigin_t:%22Islandora%20Sample%20Content%20Generator.%22';
   // Build up the Solr query so that content model and parent are appended
   // to the basic query, if they are present.
   if (drush_get_option('quantity') == 'all') {
@@ -217,6 +217,7 @@ function drush_islandora_scg_dump() {
   $pids = islandora_scg_query_solr($query);
   if (!count($pids) || !$pids) {
     drush_print('There are no sample objects to delete');
+    drush_print(urldecode($query));
     exit;
   }
 

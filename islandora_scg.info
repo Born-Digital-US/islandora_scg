@@ -15,3 +15,4 @@ files[] = includes/islandora_scg_book.inc
 files[] = includes/islandora_scg_newspaper.inc
 files[] = includes/islandora_scg_newspaper_issue.inc
 files[] = includes/islandora_scg_collection.inc
+files[] = includes/islandora_scg_simpletext.inc

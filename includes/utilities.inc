@@ -22,6 +22,7 @@ function islandora_scg_query_solr($query) {
   }
   $solr_url = variable_get('islandora_solr_url', 'http://localhost:8080/solr');
   $pid_query = $solr_url . '/select?version=1.2&rows=1000000&wt=json&json.nl=map&q=' . $query;
+  drush_print($pid_query);
   $raw_result = drupal_http_request($pid_query);
   if ($raw_result->code != 200) {
     return FALSE;
@@ -196,6 +197,11 @@ function islandora_scg_get_cmodel_associations() {
     'islandora:collectionCModel' => array(
       'class' => 'IslandoraSampleCollectionGenerator',
       'cmodel_module' => 'islandora_basic_collection',
+      'batch_loader_module' => 'islandora_batch',
+    ),
+    'islandora:sp_example_text' => array(
+      'class' => 'IslandoraSampleSimpletextGenerator',
+      'cmodel_module' => 'islandora_example_simple_text',
       'batch_loader_module' => 'islandora_batch',
     ),
   );
